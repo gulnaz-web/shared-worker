@@ -1,42 +1,76 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* Дополнительные стили для App компонента */
+.container {
+   animation: fadeIn 0.5s ease-in;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+@keyframes fadeIn {
+   from {
+      opacity: 0;
+      transform: translateY(20px);
+   }
+   to {
+      opacity: 1;
+      transform: translateY(0);
+   }
 }
 
 .card {
-  padding: 2em;
+   animation: slideIn 0.6s ease-out;
 }
 
-.read-the-docs {
-  color: #888;
+@keyframes slideIn {
+   from {
+      opacity: 0;
+      transform: translateX(-20px);
+   }
+   to {
+      opacity: 1;
+      transform: translateX(0);
+   }
+}
+
+.btn {
+   position: relative;
+   overflow: hidden;
+}
+
+.btn::before {
+   content: '';
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   width: 0;
+   height: 0;
+   background: rgba(255, 255, 255, 0.2);
+   border-radius: 50%;
+   transform: translate(-50%, -50%);
+   transition: width 0.3s, height 0.3s;
+}
+
+.btn:active::before {
+   width: 200px;
+   height: 200px;
+}
+
+.input {
+   transition: all 0.2s ease;
+}
+
+.input:hover {
+   border-color: var(--primary-color);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+   .container {
+      padding: 1rem;
+   }
+
+   .card {
+      padding: 1.5rem;
+   }
+
+   .grid {
+      grid-template-columns: 1fr;
+   }
 }
